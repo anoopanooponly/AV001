@@ -4,4 +4,5 @@
 node_modules/
 public/lib
 test/coverage/
+.idea
 test/test22 from editor
