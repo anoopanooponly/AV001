@@ -1,0 +1,19 @@
+extends ../layouts/default
+block content
+    div.well.span4.offset6#login-container
+      form(action="/users/session", method="post")
+        p.error= message
+        p.subheading Please Login To Your Account
+        label(for='email') Email
+        input#email(type='text', name="email", placeholder='Email')
+        label(for='password') Password
+        input#password(type='password', name="password", placeholder='Password')
+        hr
+        button.btn.btn-primary(type='submit')
+            i.marginright5.icon-lock.icon-white
+            |Sign in
+        hr
+        div.btm-links
+            a.marginright20 Forgot your Password ?
+            a.marginright20(href="/signup") Sign Up
+

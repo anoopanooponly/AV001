@@ -1,0 +1,83 @@
+.navbar .nav>li>a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+
+.content {
+    margin-top:50px;
+    width:100%
+}
+
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#ddd;
+    -webkit-box-shadow:0 8px 6px 6px black;
+    -moz-box-shadow:0 8px 6px 6px black;
+    box-shadow:0 8px 6px 6px black
+}
+
+footer p {
+    padding:5px 0 12px 10px
+}
+
+.bodyClass
+{
+    /* IE10 Consumer Preview */
+    background-image: -ms-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+
+    /* Mozilla Firefox */
+    background-image: -moz-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+
+    /* Opera */
+    background-image: -o-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+
+    /* Webkit (Safari/Chrome 10) */
+    background-image: -webkit-gradient(circle, rgb(217,218,222), rgb(148,148,148)));
+
+    /* Webkit (Chrome 11+) */
+    background-image: -webkit-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+
+    /* W3C Markup, IE10 Release Preview */
+    background-image: radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-repeat: repeat-y;
+}
+#login-container {
+  margin-top: 10%;
+}
+#account-form-container {
+    margin-top: 10%;
+}
+
+#login-container button {
+
+}
+#login-container .btm-links {
+    text-align: center;
+    margin-top: 10px;
+}
+.subheading {
+    color: #808080;
+    text-shadow: -1px 1px 0 #fff;
+    -moz-text-shadow: -1px 1px 0 #fff;
+    -webkit-text-shadow: -1px 1px 0 #fff;
+    margin-top: 3px;
+}
+
+.marginleft20
+{
+    margin-left: 20px;
+}
+
+.marginright20
+{
+    margin-right: 20px;
+}
+
+.marginright5
+{
+    margin-right: 5px;
+}
