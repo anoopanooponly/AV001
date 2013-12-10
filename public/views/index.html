@@ -1,4 +1,9 @@
-<section class="margintop3percent" data-ng-controller="IndexController">
-	<h1>This is the home view</h1>
+<div class="container-fluid margintop3percent"  data-ng-controller="IndexController" data-ng-hide="global.authenticated" >
 
-</section>
+Not logged in
+</div>
+
+<div class="container-fluid margintop3percent"   data-ng-show="global.authenticated" data-ng-controller="IndexController">
+l
+
+</div>
