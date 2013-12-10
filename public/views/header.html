@@ -1,17 +1,24 @@
-<div class="navbar-inner" data-ng-controller="HeaderController">
+<div class="navbar-inner"  data-ng-controller="HeaderController">
 
     <button class="btn btn-navbar"  ng-click="isCollapsed = !isCollapsed">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
+
     <a  class="brand"  href=""><i class="icon-home icon-white"></i> AV001</a>
     <div collapse="isCollapsed" class="nav-collapse collapse navbar-responsive-collapse"  >
-        <ul class="nav" >
+        <ul class="nav menu" >
             <li class="divider-vertical"></li>
-             <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active:isActive(item.link)}">
-                <a href="#!/{{item.link}}" >{{item.title}}</a>
+
+             <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" >
+
+                <a href="#!/{{item.link}}"  ng-class="{activemenuitem:isActive(item.link)}">{{item.title}}</a>
+
+
              </li>
+
+
         </ul>
         <ul class="nav pull-right" data-ng-hide="global.authenticated">
             <li><a href="signup">Signup</a>
@@ -26,10 +33,13 @@
                     {{global.user.name}} <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                    <li><a href="/signout">Settings</a> </li>
                     <li><a href="/signout">Signout</a>
                     </li>
                 </ul>
             </li>
         </ul>
         </div>
+
+
 </div>

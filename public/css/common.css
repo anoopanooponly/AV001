@@ -48,6 +48,8 @@ footer p {
 #login-container {
   margin-top: 10%;
 }
+
+
 #account-form-container {
     margin-top: 10%;
 }
@@ -85,4 +87,36 @@ footer p {
 .margintop3percent
 {
     margin-top: 3%;
+}
+
+.nav::after {
+    display: table; content: " ";
+}
+.nav::after {
+    clear: both;
+}
+.nav ul {
+    list-style: none;
+}
+.nav > li > a {
+    display: block;
+}
+.menu li a {
+    padding: 25px 50px; transition:0.5s ease-in-out; text-align: center; color: rgb(255, 255, 255); font-size: 1em; display: block; position: relative; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out;
+}
+.menu li a:hover {
+    background: rgb(80, 89, 123); border-bottom-color: rgb(255, 138, 33); border-bottom-width: 3px; border-bottom-style: solid;
+}
+.menu li.active a {
+    background: rgb(80, 89, 123); border-bottom-color: rgb(17, 168, 171); border-bottom-width: 3px; border-bottom-style: solid;
+}
+
+.activemenuitem
+{
+    background: rgb(80, 89, 123); border-bottom-color: rgb(17, 168, 171); border-bottom-width: 3px; border-bottom-style: solid;
+}
+
+.inner
+{
+    background: #394264;
 }
