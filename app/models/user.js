@@ -11,6 +11,79 @@ var mongoose = require('mongoose'),
 /**
  * User Schema
  */
+var publicProfile = new Schema({
+    aboutMe:String,
+    displayName: String,
+    dateOfBirth:{type: Date},
+    currentCity:String,
+    nativeCity:String,
+    currentAddress1:String,
+    currentAddress2:String,
+    currentZip:Number,
+    address1:String,
+    address2:String,
+    state:String,
+    nationality:String,
+    zip:Number,
+    gender:String,
+    relationshipStatus:String,
+    languages:[String],
+    religion:String,
+    mobilePhone:number,
+    landLine:number,
+    web:String,
+    profilePicID:Number
+});
+var professionalProfile = new Schema({
+    aboutMe:String,
+    openToHire:Boolean,
+    noticePeriod: Number,
+    experience:[Experience],
+    qualifications:[Qualification],
+    skills:[Skill],
+    locationPreferences:[String]
+});
+var Job = new Experience({
+    title:String,
+    company:String,
+    startDate:{type:Date},
+    endDate:{type:Date},
+    projects:[Project]
+});
+var Qualification = new Schema({
+   nameOftheCourse:String,
+    status:String,
+    institution:String,
+    university:String,
+    regNo:String,
+    GPA:Number,
+    startDate:{type:Date},
+    endDate:{type:Date},
+    projects:[Project]
+});
+var Skill = new Schema({
+    name:String,
+    months:Number
+});
+var Project = new Schema({
+   name:String,
+    company:String,
+    startDate:{type:Date},
+    endDate:{type:Date},
+    status:String,
+    role:String,
+    description:String,
+    technologiesUsed : String
+});
+var extendedPublicProfile = new Schema({
+    familyName:String,
+    caste:String,
+    subCaste:String,
+    star:String,
+    birthTime:String,
+    lookingFor:String,
+    partnerPreferences:String
+});
 var UserSchema = new Schema({
     name: String,
     email: String,
@@ -21,6 +94,9 @@ var UserSchema = new Schema({
     provider: String,
     hashed_password: String,
     salt: String,
+    publicProfile: publicProfile,
+    professionalProfile: professionalProfile,
+    extendedPublicProfile: extendedPublicProfile,
     facebook: {},
     twitter: {},
     github: {},
