@@ -1,13 +1,21 @@
-angular.module('mean.system').controller('HeaderController', ['$scope', 'Global', function ($scope, Global) {
+angular.module('mean.system').controller('HeaderController', ['$scope', 'Global','$location', function ($scope, Global,$location) {
     $scope.global = Global;
 
     $scope.menu = [{
         "title": "Articles",
-        "link": "articles"
+        "link": "articles","selected" : "false"
     }, {
-        "title": "Create New Article",
-        "link": "articles/create"
-    }];
+        "title": "New Article",
+        "link": "articles/create","selected" : "false"
+    }
+
+    ];
     
     $scope.isCollapsed = false;
+
+    $scope.isActive = function(route) {
+        route = '/' + route;
+       console.log(route + '<>' + $location.path());
+                return route === $location.path();
+    }
 }]);

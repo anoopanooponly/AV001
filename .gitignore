@@ -5,5 +5,8 @@ node_modules/
 public/lib
 test/coverage/
 test/test1
+.idea/vcs.xml
+.idea/workspace.xml
 .idea/
 npm-debug.log
+test/test22

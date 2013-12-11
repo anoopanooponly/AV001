@@ -27,27 +27,29 @@ footer p {
 .bodyClass
 {
     /* IE10 Consumer Preview */
-    background-image: -ms-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-image: -ms-radial-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252));
 
     /* Mozilla Firefox */
-    background-image: -moz-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-image: -moz-radial-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252));
 
     /* Opera */
-    background-image: -o-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-image: -o-radial-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252));
 
     /* Webkit (Safari/Chrome 10) */
-    background-image: -webkit-gradient(circle, rgb(217,218,222), rgb(148,148,148)));
+    background-image: -webkit-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252)));
 
     /* Webkit (Chrome 11+) */
-    background-image: -webkit-radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-image: -webkit-radial-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252));
 
     /* W3C Markup, IE10 Release Preview */
-    background-image: radial-gradient(circle, rgb(217,218,222), rgb(148,148,148));
+    background-image: radial-gradient(circle, rgb(128, 206, 252), rgb(93, 139, 252));
     background-repeat: repeat-y;
 }
 #login-container {
   margin-top: 10%;
 }
+
+
 #account-form-container {
     margin-top: 10%;
 }
@@ -80,4 +82,41 @@ footer p {
 .marginright5
 {
     margin-right: 5px;
+}
+
+.margintop3percent
+{
+    margin-top: 3%;
+}
+
+.nav::after {
+    display: table; content: " ";
+}
+.nav::after {
+    clear: both;
+}
+.nav ul {
+    list-style: none;
+}
+.nav > li > a {
+    display: block;
+}
+.menu li a {
+    padding: 25px 50px; transition:0.5s ease-in-out; text-align: center; color: rgb(255, 255, 255); font-size: 1em; display: block; position: relative; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out;
+}
+.menu li a:hover {
+    background: rgb(80, 89, 123); border-bottom-color: rgb(255, 138, 33); border-bottom-width: 3px; border-bottom-style: solid;
+}
+.menu li.active a {
+    background: rgb(80, 89, 123); border-bottom-color: rgb(197, 250, 74); border-bottom-width: 3px; border-bottom-style: solid;
+}
+
+.activemenuitem
+{
+    background: rgb(80, 89, 123); border-bottom-color: rgb(197, 250, 74); border-bottom-width: 3px; border-bottom-style: solid;
+}
+
+.inner
+{
+    background: #394264;
 }
