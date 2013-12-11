@@ -5,3 +5,5 @@ node_modules/
 public/lib
 test/coverage/
 test/test1
+.idea
+npm-debug.log
