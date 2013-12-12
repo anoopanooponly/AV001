@@ -1,5 +1,5 @@
 <section data-ng-controller="ArticlesController">
-	<form class="form-horizontal" data-ng-submit="create()">
+	<form class="form-horizontal" data-ng-submit="create()" data-ng-show="global.authenticated">
 		<div class="control-group">
 			<label class="control-label" for="title">Title</label>
 			<div class="controls">
