@@ -4,5 +4,9 @@
 node_modules/
 public/lib
 test/coverage/
-.idea
-test/test22 from editor
+test/test1
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/
+npm-debug.log
+test/test22
