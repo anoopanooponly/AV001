@@ -93,3 +93,25 @@ exports.user = function(req, res, next, id) {
 exports.publicProfile = function(req, res) {
     res.jsonp(req.user.publicProfile);
 };
+
+/**
+ * Update a public profile
+ */
+exports.updatePublicProfile = function(req, res) {
+
+    var publicProfile = req.body;
+
+    //publicProfile = _.extend(publicProfile, req.body);
+
+    User.update({_id: req.user._id}, {$set: {
+        publicProfile: publicProfile
+    }}, function(err) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        }
+        else
+            res.redirect('/');
+        });
+};

@@ -70,7 +70,8 @@ module.exports = function(app, passport, auth) {
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
-    app.get('/publicProfile', users.publicProfile);
+    app.get('/publicProfile', auth.requiresLogin, users.publicProfile);
+    app.put('/publicProfile', auth.requiresLogin, users.updatePublicProfile);
 
     //Home route
     var index = require('../app/controllers/index');
