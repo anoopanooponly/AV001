@@ -11,39 +11,7 @@ var mongoose = require('mongoose'),
 /**
  * User Schema
  */
-var publicProfile = new Schema({
-    aboutMe:String,
-    displayName: String,
-    dateOfBirth:{type: Date},
-    currentCity:String,
-    nativeCity:String,
-    currentAddress1:String,
-    currentAddress2:String,
-    currentZip:Number,
-    address1:String,
-    address2:String,
-    state:String,
-    nationality:String,
-    zip:Number,
-    gender:String,
-    relationshipStatus:String,
-    languages:[String],
-    religion:String,
-    mobilePhone:number,
-    landLine:number,
-    web:String,
-    profilePicID:Number
-});
-var professionalProfile = new Schema({
-    aboutMe:String,
-    openToHire:Boolean,
-    noticePeriod: Number,
-    experience:[Experience],
-    qualifications:[Qualification],
-    skills:[Skill],
-    locationPreferences:[String]
-});
-var Job = new Experience({
+var Experience = new Schema({
     title:String,
     company:String,
     startDate:{type:Date},
@@ -51,7 +19,7 @@ var Job = new Experience({
     projects:[Project]
 });
 var Qualification = new Schema({
-   nameOftheCourse:String,
+    course:String,
     status:String,
     institution:String,
     university:String,
@@ -75,15 +43,6 @@ var Project = new Schema({
     description:String,
     technologiesUsed : String
 });
-var extendedPublicProfile = new Schema({
-    familyName:String,
-    caste:String,
-    subCaste:String,
-    star:String,
-    birthTime:String,
-    lookingFor:String,
-    partnerPreferences:String
-});
 var UserSchema = new Schema({
     name: String,
     email: String,
@@ -94,9 +53,52 @@ var UserSchema = new Schema({
     provider: String,
     hashed_password: String,
     salt: String,
-    publicProfile: publicProfile,
-    professionalProfile: professionalProfile,
-    extendedPublicProfile: extendedPublicProfile,
+    publicProfile: {
+        aboutMe:String,
+        displayName: String,
+        dateOfBirth:{
+            type: Date
+        },
+        currentCity:String,
+        nativeCity:String,
+        currentAddress1:String,
+        currentAddress2:String,
+        currentZip:Number,
+        address1:String,
+        address2:String,
+        state:String,
+        nationality:String,
+        zip:Number,
+        gender:String,
+        relationshipStatus:String,
+        languages:[String],
+        religion:String,
+        mobilePhone:Number,
+        landLine:Number,
+        web:String,
+        profilePicID:Number,
+        lastUpdated:{
+            type: Date
+        }
+    },
+    professionalProfile: {
+        aboutMe:String,
+        openToHire:Boolean,
+        noticePeriod: Number,
+        experience:[Experience],
+        qualifications:[Qualification],
+        skills:[Skill],
+        locationPreferences:[String]
+    },
+    extendedPublicProfile: {
+        familyName:String,
+         caste:String,
+         subCaste:String,
+         star:String,
+         birthTime:String,
+         lookingFor:String,
+         partnerPreferences:String
+    },
     facebook: {},
     twitter: {},
     github: {},

@@ -89,3 +89,7 @@ exports.user = function(req, res, next, id) {
             next();
         });
 };
+
+exports.publicProfile = function(req, res) {
+    res.jsonp(req.user.publicProfile);
+};

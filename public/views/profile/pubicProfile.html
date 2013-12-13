@@ -1,0 +1,25 @@
+<div data-ng-controller="ProfileController" data-ng-init="showPublicProfile()">
+    <form class="form-horizontal" data-ng-submit="savePublicProfile()">
+        <div class="control-group">
+            <label class="control-label" for="displayName">Display Name</label>
+
+            <div class="controls">
+                <input type="text" data-ng-model="profile.displayName" id="displayName" placeholder="displayName" required>
+                </input>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="aboutMe">About Me</label>
+
+            <div class="controls">
+                <textarea data-ng-model="article.aboutMe" id="aboutMe" cols="30" rows="10" placeholder="aboutMe">
+                </textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" class="btn">
+            </div>
+        </div>
+    </form>
+</div>

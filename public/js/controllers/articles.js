@@ -14,7 +14,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$ro
         this.content = "";
     };
 
-    $scope.remove = function(article) {
+    $scope.remove = function(article) {s
         if (article) {
             article.$remove();  
 
