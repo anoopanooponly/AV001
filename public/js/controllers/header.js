@@ -8,6 +8,10 @@ angular.module('mean.system').controller('HeaderController', ['$scope', 'Global'
         "title": "New Article",
         "link": "articles/create","selected" : "false"
     }
+        , {
+            "title": "Posts",
+            "link": "posts","selected" : "false"
+        }
 
     ];
     

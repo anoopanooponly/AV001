@@ -9,10 +9,7 @@ angular.module('mean.profiles').controller('ProfileController', ['$scope', '$rou
 
  $scope.showPublicProfile = function() {
  Profile.query( function(publicProfile) {
-     if(publicProfile.length)
-        $scope.profile = publicProfile[0];
-     else
-         $scope.profile = new Profile();
+        $scope.profile = publicProfile;
  });
  };
 $scope.savePublicProfile = function() {

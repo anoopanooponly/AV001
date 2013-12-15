@@ -2,7 +2,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+    User = mongoose.model('User'),
+    _ = require('underscore');
 
 /**
  * Auth callback
@@ -91,7 +92,19 @@ exports.user = function(req, res, next, id) {
 };
 
 exports.publicProfile = function(req, res) {
-    res.jsonp(req.user.publicProfile);
+    User.findOne({
+        _id: req.user._id
+    }).exec(function(err, user) {
+        if (err) {
+            res.render('error', {
+                status: 500
+            });
+        } else {
+            user.publicProfile = _.extend({}, user.publicProfile);
+            res.jsonp(user.publicProfile);
+        }
+    });
+//    res.jsonp(req.user.publicProfile);
 };
 
 /**
