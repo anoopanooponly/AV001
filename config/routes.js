@@ -70,7 +70,18 @@ module.exports = function(app, passport, auth ) {
     //Finish with setting up the articleId param
     app.param('articleId', articles.article);
 
-    app.get('/publicProfile', users.publicProfile);
+    var posts = require('../app/controllers/posts');
+    app.get('/posts', auth.requiresLogin, posts.all);
+    app.post('/posts', auth.requiresLogin, posts.create);
+    app.get('/posts/:postId', posts.show);
+    app.put('/posts/:postId', auth.requiresLogin, auth.article.hasAuthorization, posts.update);
+    app.del('/posts/:postId', auth.requiresLogin, auth.article.hasAuthorization, posts.destroy);
+
+    //Finish with setting up the articleId param
+    app.param('postId', posts.post);
+
+    app.get('/publicProfile', auth.requiresLogin, users.publicProfile);
+    app.put('/publicProfile', auth.requiresLogin, users.updatePublicProfile);
 
     //Home route
     var index = require('../app/controllers/index');

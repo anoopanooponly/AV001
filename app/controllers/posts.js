@@ -2,18 +2,18 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-   Article = mongoose.model('Article'),
+    Post = mongoose.model('Post'),
     _ = require('underscore');
 
 
 /**
  * Find article by id
  */
-exports.article = function(req, res, next, id) {
-    Article.load(id, function(err, article) {
+exports.post = function(req, res, next, id) {
+    Post.load(id, function(err, post) {
         if (err) return next(err);
-        if (!article) return next(new Error('Failed to load article ' + id));
-        req.article = article;
+        if (!post) return next(new Error('Failed to load article ' + id));
+        req.post = post;
         next();
     });
 };
@@ -22,17 +22,17 @@ exports.article = function(req, res, next, id) {
  * Create a article
  */
 exports.create = function(req, res) {
-    var article = new Article(req.body);
-    article.user = req.user;
+    var post = new Post(req.body);
+    post.user = req.user;
 
-    article.save(function(err) {
+    post.save(function(err) {
         if (err) {
             return res.send('users/signup', {
                 errors: err.errors,
-                article: article
+                article: post
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(post);
         }
     });
 };
@@ -41,12 +41,12 @@ exports.create = function(req, res) {
  * Update a article
  */
 exports.update = function(req, res) {
-    var article = req.article;
+    var post = req.post;
 
-    article = _.extend(article, req.body);
+    post = _.extend(post, req.body);
 
-    article.save(function(err) {
-        res.jsonp(article);
+    post.save(function(err) {
+        res.jsonp(post);
     });
 };
 
@@ -54,15 +54,15 @@ exports.update = function(req, res) {
  * Delete an article
  */
 exports.destroy = function(req, res) {
-    var article = req.article;
+    var post = req.post;
 
-    article.remove(function(err) {
+    post.remove(function(err) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(article);
+            res.jsonp(post);
         }
     });
 };
@@ -71,20 +71,20 @@ exports.destroy = function(req, res) {
  * Show an article
  */
 exports.show = function(req, res) {
-    res.jsonp(req.article);
+    res.jsonp(req.post);
 };
 
 /**
  * List of Articles
  */
 exports.all = function(req, res) {
-    Article.find().sort('-created').populate('user', 'name username').exec(function(err, articles) {
+    Post.find().sort('-created').populate('user', 'name username').exec(function(err, posts) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            res.jsonp(articles);
+            res.jsonp(posts);
         }
     });
 };
