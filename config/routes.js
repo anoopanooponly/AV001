@@ -74,8 +74,10 @@ module.exports = function(app, passport, auth) {
     app.get('/posts', auth.requiresLogin, posts.all);
     app.post('/posts', auth.requiresLogin, posts.create);
     app.get('/posts/:postId', posts.show);
-    app.put('/posts/:postId', auth.requiresLogin, auth.article.hasAuthorization, posts.update);
-    app.del('/posts/:postId', auth.requiresLogin, auth.article.hasAuthorization, posts.destroy);
+    app.put('/posts/:postId', auth.requiresLogin, posts.update);
+    app.put('/posts/:postId/user/:userId/likeInd/:likeInd', auth.requiresLogin,  posts.addLike);
+    //app.put('/posts/user/like', auth.requiresLogin,  posts.addLike);
+    app.del('/posts/:postId', auth.requiresLogin, posts.destroy);
 
     //Finish with setting up the articleId param
     app.param('postId', posts.post);

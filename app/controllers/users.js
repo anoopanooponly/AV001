@@ -94,14 +94,14 @@ exports.user = function(req, res, next, id) {
 exports.publicProfile = function(req, res) {
     User.findOne({
         _id: req.user._id
-    }).exec(function(err, user) {
+    }).exec(function(err, result) {
         if (err) {
             res.render('error', {
                 status: 500
             });
         } else {
-            user.publicProfile = _.extend({}, user.publicProfile);
-            res.jsonp(user.publicProfile);
+            if(result.publicProfileData!=null)
+                res.jsonp(result.publicProfileData);
         }
     });
 //    res.jsonp(req.user.publicProfile);
@@ -117,7 +117,7 @@ exports.updatePublicProfile = function(req, res) {
     //publicProfile = _.extend(publicProfile, req.body);
 
     User.update({_id: req.user._id}, {$set: {
-        publicProfile: publicProfile
+        publicProfileData: publicProfile
     }}, function(err) {
         if (err) {
             res.render('error', {

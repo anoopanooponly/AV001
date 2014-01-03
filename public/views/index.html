@@ -13,15 +13,15 @@
                 <h2><a data-ng-href="#!/posts/{{post._id}}">{{post.title}}</a></h2>
 
                 <div>{{post.content}}</div>
-
+                <div data-ng-controller="LikeController">
                     {{post.likes.length}}
-                    <a  data-ng-click="like($index)" data-ng-show="post.likes.indexOf(global.user._id)<0">Like</a>
+                    <a  data-ng-click="like(post)" data-ng-show="post.likes.indexOf(global.user._id)<0">Like</a>
                 &nbsp;
-                    <a data-ng-click="unlike({{$index}})"
+                    <a data-ng-click="unlike(post)"
                        data-ng-hide="post.likes.indexOf(global.user._id)<0">Unlike</a> &nbsp;
 
                     <a data-ng-href="#!/posts/comment/{{post._id}}">Comment</a>
-
+                </div>
             </li>
         </ul>
         <h1 data-ng-hide="!posts || posts.length">No posts yet. <br> Why don't you <a href="/#!/posts/create">Create

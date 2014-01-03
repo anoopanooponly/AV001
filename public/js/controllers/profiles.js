@@ -12,10 +12,12 @@ angular.module('mean.profiles').controller('ProfileController', ['$scope', '$rou
         $scope.profile = publicProfile;
  });
  };
+
 $scope.savePublicProfile = function() {
-        var profile = $scope.profile;
+    var profile = new Profile();
+    profile = $scope.profile;
         profile.lastUpdated = new Date().getTime();
-    profile.$update(function() {
+    Profile.update(function() {
             $location.path('publicProfile');
         });
     };

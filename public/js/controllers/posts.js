@@ -55,13 +55,36 @@ angular.module('mean.posts').controller('PostController', ['$scope', '$routePara
             $scope.post = post;
         });
     };
-
-    $scope.like = function(i) {
-        /*Post.get({
-            postId: $routeParams.postId
-        }, function(post) {
-            $scope.post = post;
-        });*/
+    /*$scope.like = function(i) {
         $scope.posts[i].likes.push(user._id);
+        $scope.posts[i].$update(function() {
+            //$location.path('posts/' + post._id);
+        });
+    };*/
+}]);
+
+angular.module('mean.posts').controller('LikeController', ['$scope', '$routeParams', '$location', 'Global', 'Like', function ($scope, $routeParams, $location, Global, Like) {
+    $scope.global = Global;
+    $scope.like = function(post) {
+        if (post) {
+            var like = new Like();
+            like.likeInd = true;
+            like.postId = post._id;
+            like.$like(function(res) {
+                if(res.err==null)
+                    post.likes.push(user._id);
+            });
+        }
+    };
+    $scope.unlike = function(post) {
+        if (post) {
+            var like = new Like();
+            like.likeInd = false;
+            like.postId = post._id;
+            like.$like(function(res) {
+                if(res.err==null)
+                    post.likes.slice(post.likes.lastIndexOf(user._id));
+            });
+        }
     };
 }]);

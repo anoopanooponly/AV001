@@ -88,3 +88,31 @@ exports.all = function(req, res) {
         }
     });
 };
+
+/**
+ * Update a article
+ */
+exports.addLike = function(req, res) {
+    if(req.params.likeInd=="true")
+    {
+    Post.update({_id:req.params.postId},{$push:{likes:req.params.userId}},function(err){
+        if(err){
+            console.log(err);
+        }else{
+            console.log("Successfully Liked");
+        }
+        res.jsonp({err:err});
+    });
+    }
+    else
+    {
+        Post.update({_id:req.params.postId},{$pull:{likes:req.params.userId}},function(){
+            if(err){
+                console.log(err);
+            }else{
+                console.log("Successfully Unliked");
+            }
+            res.jsonp({err:err});
+        });
+    }
+};

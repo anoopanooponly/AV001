@@ -11,6 +11,82 @@ var mongoose = require('mongoose'),
 /**
  * User Schema
  */
+
+var UserSchema = new Schema({
+    name: String,
+    email: String,
+    username: {
+        type: String,
+        unique: true
+    },
+    provider: String,
+    hashed_password: String,
+    salt: String,
+    preferences: [Preferences],
+    publicProfile: [PublicProfile],
+    professionalProfile: [ProfessionalProfile],
+    extendedPublicProfile: [ExtendedPublicProfile],
+    facebook: {},
+    twitter: {},
+    github: {},
+    google: {}
+});
+
+var PublicProfile = new Schema({
+    aboutMe:String,
+    displayName: String,
+    dateOfBirth:{
+        type: Date
+    },
+    currentCity:String,
+    nativeCity:String,
+    currentAddress1:String,
+    currentAddress2:String,
+    currentZip:Number,
+    address1:String,
+    address2:String,
+    state:String,
+    nationality:String,
+    zip:Number,
+    gender:String,
+    relationshipStatus:String,
+    languages:[String],
+    religion:String,
+    mobilePhone:Number,
+    landLine:Number,
+    web:String,
+    profilePicID:Number,
+    lastUpdated:{
+        type: Date
+    }
+});
+
+var Preferences = new Schema({
+    whoCanSeeYou:Number,
+    profProfileInd:Boolean,
+    extendedProfileInd: Number
+});
+
+var ProfessionalProfile = new Schema({
+    aboutMe:String,
+    openToHire:Boolean,
+    noticePeriod: Number,
+    experience:[Experience],
+    qualifications:[Qualification],
+    skills:[Skill],
+    locationPreferences:[String]
+});
+
+var ExtendedPublicProfile = new Schema({
+    familyName:String,
+    caste:String,
+    subCaste:String,
+    star:String,
+    birthTime:String,
+    lookingFor:String,
+    partnerPreferences:String
+});
+
 var Experience = new Schema({
     title:String,
     company:String,
@@ -43,67 +119,7 @@ var Project = new Schema({
     description:String,
     technologiesUsed : String
 });
-var UserSchema = new Schema({
-    name: String,
-    email: String,
-    username: {
-        type: String,
-        unique: true
-    },
-    provider: String,
-    hashed_password: String,
-    salt: String,
-    publicProfile: {
-        aboutMe:String,
-        displayName: String,
-        dateOfBirth:{
-            type: Date
-        },
-        currentCity:String,
-        nativeCity:String,
-        currentAddress1:String,
-        currentAddress2:String,
-        currentZip:Number,
-        address1:String,
-        address2:String,
-        state:String,
-        nationality:String,
-        zip:Number,
-        gender:String,
-        relationshipStatus:String,
-        languages:[String],
-        religion:String,
-        mobilePhone:Number,
-        landLine:Number,
-        web:String,
-        profilePicID:Number,
-        lastUpdated:{
-            type: Date
-        }
-    },
-    professionalProfile: {
-        aboutMe:String,
-        openToHire:Boolean,
-        noticePeriod: Number,
-        experience:[Experience],
-        qualifications:[Qualification],
-        skills:[Skill],
-        locationPreferences:[String]
-    },
-    extendedPublicProfile: {
-        familyName:String,
-         caste:String,
-         subCaste:String,
-         star:String,
-         birthTime:String,
-         lookingFor:String,
-         partnerPreferences:String
-    },
-    facebook: {},
-    twitter: {},
-    github: {},
-    google: {}
-});
+
 
 /**
  * Virtuals
@@ -115,6 +131,12 @@ UserSchema.virtual('password').set(function(password) {
 }).get(function() {
     return this._password;
 });
+
+UserSchema.virtual('publicProfileData').get(function() {
+    return this.publicProfile[0]});
+
+UserSchema.virtual('publicProfileData').set(function(profileData) {
+    this.publicProfile[0]=profileData});
 
 /**
  * Validations
