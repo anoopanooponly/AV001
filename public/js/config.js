@@ -26,6 +26,9 @@ angular.module('mean').config(['$routeProvider',
         when('/profile/public', {
             templateUrl: 'views/profile/pubicProfile.html'
         }).
+        when('/chat', {
+            templateUrl: 'views/chat/chat.html'
+        }).
         when('/settings', {
                 templateUrl: 'views/settings/settings.html'
         }).
