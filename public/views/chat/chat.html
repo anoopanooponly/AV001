@@ -1,0 +1,39 @@
+<div ng-controller="AppCtrl" class="ng-scope margintop3percent" >
+
+
+
+
+    <div ng-repeat="messageobj in messages"   ng-show="messageobj.messagefor != currentuser.user.email">
+        <accordion-group  class="well span3" heading="{{messageobj.messagefor}}" >
+        <div  >
+            <p class="subheading"></p>
+            <div class="overflowable">
+
+                <div ng-repeat="eachmessage in messageobj.messageslist"    style="padding-bottom: 3px;"   class="ng-scope ng-binding">
+
+                    <div ng-show="eachmessage.name == currentuser.user.email">
+
+                        <span class="label label-success" style="margin: 5px;" ><i class="icon-user icon-white"></i>{{eachmessage.name}}:</span><span class="label label-info">{{eachmessage.message}}</span>
+                    </div>
+                <div  ng-show="eachmessage.name != currentuser.user.email" style="text-align: right">
+
+                    <span class="label label-info">{{eachmessage.message}}</span><span class="label label-warning" style="margin: 5px;" >:{{eachmessage.name}}<i class="icon-user icon-white"></i></span>
+                </div>
+
+                </div>
+            </div>
+            <form name="messageform">
+                <div style="margin-top: 3px;">
+                <input ng-model="messagetyped" class="input-medium">
+                <input type="submit"  class="btn btn-mini btn-info" value="Send" ng-click="sendMessage(messageobj.messagefor, messagetyped)">
+                </div>
+
+
+
+            </form>
+
+
+        </div>
+        </accordion-group>
+    </div>
+</div>
